@@ -1,0 +1,128 @@
+﻿<#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><# 
+	manager.StartNewFile(UnitInfo.MeasureName + "FormatProvider.generated.cs"); 
+#>
+using System;
+using System.Globalization;
+using System.Resources;
+using System.Threading;
+using System.Collections.Concurrent;
+using System.Text;
+using System.Text.RegularExpressions;
+
+public partial class <#= UnitInfo.MeasureName #>FormatProvider : MeasurementFormatProvider<<#= UnitInfo.MeasureName #>, <#= UnitInfo.MeasureName #>Unit>, 
+	I<#= UnitInfo.MeasureName #>FormatProvider
+{
+    #region Fields
+
+    private static readonly ConcurrentDictionary<string, <#= UnitInfo.MeasureName #>FormatProvider> CultureProviders =
+        new ConcurrentDictionary<string, <#= UnitInfo.MeasureName #>FormatProvider>();
+
+    #endregion
+
+    public <#= UnitInfo.MeasureName #>FormatProvider(CultureInfo culture)
+        : base(culture)
+    {
+    }
+
+	public <#= UnitInfo.MeasureName #>FormatProvider() : base()
+    {
+    }
+
+
+    /// <summary>
+    /// Gets the <#= UnitInfo.MeasureName #>FormatProvider object associated with the specified IFormatProvider object. 
+    /// </summary>
+    /// <param name="formatProvider"></param>
+    /// <returns></returns>
+    public static I<#= UnitInfo.MeasureName #>FormatProvider GetInstance(IFormatProvider formatProvider)
+    {
+        if (formatProvider == null)
+            return Current;
+
+        return (I<#= UnitInfo.MeasureName #>FormatProvider)formatProvider.GetFormat(typeof(I<#= UnitInfo.MeasureName #>FormatProvider))
+                ?? (I<#= UnitInfo.MeasureName #>FormatProvider)formatProvider.GetFormat(typeof(<#= UnitInfo.MeasureName #>FormatProvider))
+                ?? Current;
+    }
+
+    public static <#= UnitInfo.MeasureName #>FormatProvider ForCulture(CultureInfo culture)
+    {
+        if (culture == null) throw new ArgumentNullException("culture");
+
+        return CultureProviders.GetOrAdd(culture.NativeName,
+                                            name => new <#= UnitInfo.MeasureName #>FormatProvider(culture));
+    }
+
+
+    public static <#= UnitInfo.MeasureName #>FormatProvider Current
+    {
+        get { return ForCulture(Thread.CurrentThread.CurrentUICulture); }
+    }
+
+    protected override ResourceManager ResourceManager
+    {
+        get { return <#= UnitInfo.MeasureName #>Resources.ResourceManager; }
+    }
+
+    protected override <#= UnitInfo.MeasureName #> Factory(decimal value, <#= UnitInfo.MeasureName #>Unit unitOfMeasure)
+    {
+        return new <#= UnitInfo.MeasureName #>(value, unitOfMeasure);
+    }
+
+    public string Format(string format, object arg, IFormatProvider formatProvider)
+    {
+        var asI<#= UnitInfo.MeasureName #> = arg as I<#= UnitInfo.MeasureName #>;
+        if (asI<#= UnitInfo.MeasureName #> == null)
+            throw new ArgumentException("Invalid Argument","arg");
+
+        <#= UnitInfo.MeasureName #> <#= UnitInfo.MeasureName.ToLower() #> = asI<#= UnitInfo.MeasureName #>.<#= UnitInfo.MeasureName #>;
+
+        if (!string.IsNullOrEmpty(format))
+        {
+			string unitName = <#= UnitInfo.MeasureName.ToLower() #>.UnitOfMeasure.ToString();
+            
+			switch (format)
+            {
+                case "g":
+                    format = ResourceManager.GetString(unitName + "ShortFormat", Culture);
+					return string.Format(formatProvider, format, <#= UnitInfo.MeasureName.ToLower() #>);
+
+                case "G":
+                    format = ResourceManager.GetString(unitName + "LongFormat", Culture);
+					return string.Format(formatProvider, format, <#= UnitInfo.MeasureName.ToLower() #>);
+
+                case "u":
+                case "uom":
+                    return ResourceManager.GetString(unitName + "Short", Culture);
+
+                case "U":
+                case "UOM":
+                    return ResourceManager.GetString(unitName + 
+					(<#= UnitInfo.MeasureName.ToLower() #>.Value == 1 ? "Single" : "Plural"), Culture);
+            }
+
+
+            string customResult = null;
+			CustomFormat(format, <#= UnitInfo.MeasureName.ToLower() #>, formatProvider, ref customResult);
+            if (customResult != null)
+                 return customResult;
+
+            if (format.StartsWith("As", StringComparison.Ordinal))
+            {
+                format = format.Substring(2);
+                <#= UnitInfo.MeasureName #>Unit unit;
+                if (Enum.TryParse(format, false, out unit))
+                    return <#= UnitInfo.MeasureName.ToLower() #>.ConvertTo(unit).ToString("g", formatProvider);
+            }
+        }
+        return <#= UnitInfo.MeasureName.ToLower() #>.Value.ToString(format, formatProvider);
+    }
+
+
+	partial void CustomFormat(string format, <#= UnitInfo.MeasureName #> <#= UnitInfo.MeasureName.ToLower() #>, IFormatProvider formatProvider, ref string result);
+
+}
+<# 
+	manager.EndBlock(); 
+#>

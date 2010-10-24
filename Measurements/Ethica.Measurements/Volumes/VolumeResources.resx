@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LitersSingle" xml:space="preserve">
+    <value>liter</value>
+  </data>
+  <data name="LitersPlural" xml:space="preserve">
+    <value>liters</value>
+  </data>
+  <data name="LitersShort" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="LitersShortFormat" xml:space="preserve">
+    <value>{0}{0:u}</value>
+  </data>
+  <data name="LitersLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="LitersRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Ll](it(er|re)s?)?)\s * $)</value>
+  </data>
+  <data name="CubicMetersSingle" xml:space="preserve">
+    <value>cubic meter</value>
+  </data>
+  <data name="CubicMetersPlural" xml:space="preserve">
+    <value>cubic meters</value>
+  </data>
+  <data name="CubicMetersShort" xml:space="preserve">
+    <value>m³</value>
+  </data>
+  <data name="CubicMetersShortFormat" xml:space="preserve">
+    <value>{0}{0:u}</value>
+  </data>
+  <data name="CubicMetersLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="CubicMetersRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?(m(3|³)|(C|c)ubic\s[Mm](eters?)?))\s*$)</value>
+  </data>
+  <data name="CubicCentimetersSingle" xml:space="preserve">
+    <value>cubic centimeter</value>
+  </data>
+  <data name="CubicCentimetersPlural" xml:space="preserve">
+    <value>cubic centimeters</value>
+  </data>
+  <data name="CubicCentimetersShort" xml:space="preserve">
+    <value>dm³</value>
+  </data>
+  <data name="CubicCentimetersShortFormat" xml:space="preserve">
+    <value>{0}{0:u}</value>
+  </data>
+  <data name="CubicCentimetersLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="CubicCentimetersRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?([Dd]m(3|³)|(C|c)ubic\s(dm|cm|[Cc]entimeters?)))\s*$)</value>
+  </data>
+  <data name="CubicFeetSingle" xml:space="preserve">
+    <value>cubic feet</value>
+  </data>
+  <data name="CubicFeetPlural" xml:space="preserve">
+    <value>cubic feet</value>
+  </data>
+  <data name="CubicFeetShort" xml:space="preserve">
+    <value>ft³</value>
+  </data>
+  <data name="CubicFeetShortFormat" xml:space="preserve">
+    <value>{0}{0:u}</value>
+  </data>
+  <data name="CubicFeetLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="CubicFeetRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?([Ff]t(3|³)|(C|c)ubic\s[Ff](ee|oo)?t?))\s*$)</value>
+  </data>
+  <data name="CubicInchesSingle" xml:space="preserve">
+    <value>cubic inch</value>
+  </data>
+  <data name="CubicInchesPlural" xml:space="preserve">
+    <value>cubic inches</value>
+  </data>
+  <data name="CubicInchesShort" xml:space="preserve">
+    <value>in³</value>
+  </data>
+  <data name="CubicInchesShortFormat" xml:space="preserve">
+    <value>{0}{0:u}</value>
+  </data>
+  <data name="CubicInchesLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="CubicInchesRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?(in(3|³)|(C|c)ubic\s[Ii]n(ch(es)?)?))\s*$)</value>
+  </data>
+  <data name="CubicYardsSingle" xml:space="preserve">
+    <value>cubic yard</value>
+  </data>
+  <data name="CubicYardsPlural" xml:space="preserve">
+    <value>cubic yards</value>
+  </data>
+  <data name="CubicYardsShort" xml:space="preserve">
+    <value>yd³</value>
+  </data>
+  <data name="CubicYardsShortFormat" xml:space="preserve">
+    <value>{0}{0:u}</value>
+  </data>
+  <data name="CubicYardsLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="CubicYardsRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?(yd(3|³)|(C|c)ubic\s[Yy](ar)?ds?))\s*$)</value>
+  </data>
+  <data name="FluidOuncesUKSingle" xml:space="preserve">
+    <value>fluid ounce (UK)</value>
+  </data>
+  <data name="FluidOuncesUKPlural" xml:space="preserve">
+    <value>fluid ounces (UK)</value>
+  </data>
+  <data name="FluidOuncesUKShort" xml:space="preserve">
+    <value>fl.oz (UK)</value>
+  </data>
+  <data name="FluidOuncesUKShortFormat" xml:space="preserve">
+    <value>{0} {0:u}</value>
+  </data>
+  <data name="FluidOuncesUKLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="FluidOuncesUKRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Ff]l(uid\s|\s|\.)[Oo](z|unces?)\s?\((Uk|uk|UK)\))\s * $)</value>
+  </data>
+  <data name="FluidOuncesSingle" xml:space="preserve">
+    <value>fluid ounce</value>
+  </data>
+  <data name="FluidOuncesPlural" xml:space="preserve">
+    <value>fluid ounces</value>
+  </data>
+  <data name="FluidOuncesShort" xml:space="preserve">
+    <value>fl.oz</value>
+  </data>
+  <data name="FluidOuncesShortFormat" xml:space="preserve">
+    <value>{0} {0:u}</value>
+  </data>
+  <data name="FluidOuncesLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="FluidOuncesRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Ff]l(uid\s|\s|\.)[Oo](z|unces?))\s * $)</value>
+  </data>
+  <data name="PintsUKSingle" xml:space="preserve">
+    <value>pint (UK)</value>
+  </data>
+  <data name="PintsUKPlural" xml:space="preserve">
+    <value>pints (UK)</value>
+  </data>
+  <data name="PintsUKShort" xml:space="preserve">
+    <value>pt (UK)</value>
+  </data>
+  <data name="PintsUKShortFormat" xml:space="preserve">
+    <value>{0} {0:u}</value>
+  </data>
+  <data name="PintsUKLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="PintsUKRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Pp](in)?ts?\s?\((Uk|uk|UK)\))\s * $)</value>
+  </data>
+  <data name="PintsSingle" xml:space="preserve">
+    <value>pint</value>
+  </data>
+  <data name="PintsPlural" xml:space="preserve">
+    <value>pints</value>
+  </data>
+  <data name="PintsShort" xml:space="preserve">
+    <value>pt</value>
+  </data>
+  <data name="PintsShortFormat" xml:space="preserve">
+    <value>{0}{0:u}</value>
+  </data>
+  <data name="PintsLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="PintsRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Pp](in)?ts?)\s * $)</value>
+  </data>
+  <data name="QuartsUKSingle" xml:space="preserve">
+    <value>quart (UK)</value>
+  </data>
+  <data name="QuartsUKPlural" xml:space="preserve">
+    <value>quarts (UK)</value>
+  </data>
+  <data name="QuartsUKShort" xml:space="preserve">
+    <value>qt (UK)</value>
+  </data>
+  <data name="QuartsUKShortFormat" xml:space="preserve">
+    <value>{0} {0:u}</value>
+  </data>
+  <data name="QuartsUKLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="QuartsUKRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Qq](uar)?ts?\s?\((Uk|uk|UK)\))\s * $)</value>
+  </data>
+  <data name="QuartsSingle" xml:space="preserve">
+    <value>quart</value>
+  </data>
+  <data name="QuartsPlural" xml:space="preserve">
+    <value>quarts</value>
+  </data>
+  <data name="QuartsShort" xml:space="preserve">
+    <value>qt</value>
+  </data>
+  <data name="QuartsShortFormat" xml:space="preserve">
+    <value>{0} {0:u}</value>
+  </data>
+  <data name="QuartsLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="QuartsRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Qq](uar)?ts?)\s * $)</value>
+  </data>
+  <data name="GallonsUKSingle" xml:space="preserve">
+    <value>gallon (UK)</value>
+  </data>
+  <data name="GallonsUKPlural" xml:space="preserve">
+    <value>gallons (UK)</value>
+  </data>
+  <data name="GallonsUKShort" xml:space="preserve">
+    <value>gal (UK)</value>
+  </data>
+  <data name="GallonsUKShortFormat" xml:space="preserve">
+    <value>{0} {0:u}</value>
+  </data>
+  <data name="GallonsUKLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="GallonsUKRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Gg]al(lons?)?\s?\((Uk|uk|UK)\))\s * $)</value>
+  </data>
+  <data name="GallonsSingle" xml:space="preserve">
+    <value>gallon</value>
+  </data>
+  <data name="GallonsPlural" xml:space="preserve">
+    <value>gallons</value>
+  </data>
+  <data name="GallonsShort" xml:space="preserve">
+    <value>gal</value>
+  </data>
+  <data name="GallonsShortFormat" xml:space="preserve">
+    <value>{0}{0:u}</value>
+  </data>
+  <data name="GallonsLongFormat" xml:space="preserve">
+    <value>{0} {0:U}</value>
+  </data>
+  <data name="GallonsRegex" xml:space="preserve">
+    <value>(^(?&lt;Value&gt;(\d|\.|\,)+)(?:\s?[Gg]al(lons?)?)\s * $)</value>
+  </data>
+</root>

@@ -1,0 +1,241 @@
+﻿<# 
+foreach(var me in Units)
+{									    
+	manager.StartNewFile(me.ClassName + ".generated.cs"); 
+#>
+using System;
+using System.ComponentModel;
+
+[TypeConverter(typeof(<#= me.ClassName #>Converter))]
+public partial struct <#= me.ClassName #> :
+	I<#= UnitInfo.MeasureName #>,
+	IFormattable,
+	IEquatable<<#= UnitInfo.MeasureName #>>,
+<#= string.Join(",\r\n" , Units.Select(c => string.Format("    IEquatable<{0}>", c.ClassName))) #>,
+<#= string.Join(",\r\n" , Units.Select(c => string.Format("    IComparable<{0}>", c.ClassName))) #>
+{
+	public static readonly decimal <#= Units[0].ClassName #>PerUnit = <#= me.RelativeUnits #>M;
+	public static readonly decimal UnitsPer<#= Units[0].ClassName #> = <#= 1.0M / me.RelativeUnits #>M;
+
+	#region Fields
+
+    /// <summary>
+    /// The value of the <#= UnitInfo.MeasureName #> represented by RelativeUnits
+    /// </summary>
+    readonly decimal _value;
+
+    #endregion
+
+	#region Properties
+
+    /// <summary>
+    /// The value of the <#= UnitInfo.MeasureName #> represented by RelativeUnits
+    /// </summary>
+    public decimal Value { get { return _value; } }
+    
+	#endregion
+
+	public <#= me.ClassName #>(decimal value)
+	{
+		_value = value;
+	}
+
+	#region Equality
+
+    /// <summary>
+    /// Equates whether this value is the same as another value.
+    /// </summary>
+    /// <param name="obj">The value to compare to</param>
+    /// <returns>True if both values are equal</returns>
+    public override bool Equals(object obj)
+    {
+        var other = obj as I<#= UnitInfo.MeasureName #>;
+        if (other != null)
+            return Equals(other.<#= UnitInfo.MeasureName #>);
+
+        return false;
+    }
+
+    /// <summary>
+    /// Equates whether this value is the same as another value.
+    /// </summary>
+    /// <param name="other">The distance to compare to</param>
+    /// <returns>True if both values are equal</returns>
+	public bool Equals(<#= UnitInfo.MeasureName #> other)
+    {
+        return other.ConvertTo(<#= UnitInfo.MeasureName #>Unit.<#= me.ClassName #>).Value == this.Value;
+    }
+
+	/// <summary>
+    /// Equates whether this value is the same as another value.
+    /// </summary>
+    /// <param name="other">The distance to compare to</param>
+    /// <returns>True if both values are equal</returns>
+	public bool Equals(<#= me.ClassName #> other)
+    {
+        return Value.Equals(other.Value);
+    }
+
+<#
+foreach(var peer in Units.Where(d => d.RelativeUnits != me.RelativeUnits))
+{
+#>
+	public bool Equals(<#= peer.ClassName #> other)
+    {
+        return Equals(((<#= me.ClassName #>)other));
+    }	
+								
+<#	
+}
+#>
+	public static bool operator == (<#= me.ClassName #> arg1, <#= me.ClassName #> arg2)
+	{
+		return arg1.Equals(arg2);
+	}
+
+	public static bool operator != (<#= me.ClassName #> arg1, <#= me.ClassName #> arg2)
+	{
+		return !arg1.Equals(arg2);
+	}
+
+    public override int GetHashCode()
+    {
+        return Value.GetHashCode();
+    }
+
+	#endregion Equality
+
+	#region Comparable
+		
+    public static bool operator <(<#= me.ClassName #> arg1, <#= me.ClassName #> arg2)
+    {
+        return arg1.CompareTo(arg2) == -1;
+    }
+
+    public static bool operator >(<#= me.ClassName #> arg1, <#= me.ClassName #> arg2)
+    {
+        return arg1.CompareTo(arg2) == 1;
+    }
+
+	public int CompareTo(<#= UnitInfo.MeasureName #> other)
+    {
+        return Value.CompareTo(other.ConvertTo(<#= UnitInfo.MeasureName #>Unit.<#= me.ClassName #>).Value);
+    }
+
+	public int CompareTo(<#= me.ClassName #> other)
+    {
+        return Value.CompareTo(other.Value);
+    }
+
+<#
+foreach(var peer in Units.Where(d => d.RelativeUnits != me.RelativeUnits))
+{
+#>
+	public int CompareTo(<#= peer.ClassName #> other)
+    {
+        return CompareTo((<#= me.ClassName #>)other);
+    }	
+								
+<#	
+}
+#>
+	#endregion Comparable
+
+	#region Implicit Type Casting
+
+	public static implicit operator <#= me.ClassName #> (<#= UnitInfo.MeasureName #> obj)
+    {
+		return new <#= me.ClassName #>(obj.ConvertTo(<#= UnitInfo.MeasureName #>Unit.<#= me.ClassName #>).Value);
+    }	
+
+	public static implicit operator <#= UnitInfo.MeasureName #>(<#= me.ClassName #> obj)
+    {
+		return new <#= UnitInfo.MeasureName #>(obj.Value, <#= UnitInfo.MeasureName #>Unit.<#= me.ClassName #>);
+    }	
+
+<#
+foreach(var peer in Units.Where(d => d.RelativeUnits != me.RelativeUnits))
+{
+#>
+	public static implicit operator <#= me.ClassName #>(<#= peer.ClassName #> obj)
+    {
+		return new <#= me.ClassName #>(obj.Value * <#= peer.ClassName #>.<#= Units[0].ClassName #>PerUnit * <#= me.ClassName #>.UnitsPer<#= Units[0].ClassName #>);
+    }	
+			
+<#	
+}
+#>
+	#endregion
+
+	#region ToString
+
+	public string ToString(string format, IFormatProvider formatProvider)
+    {
+		var provider = <#= UnitInfo.MeasureName #>FormatProvider.GetInstance(formatProvider);
+		return provider.Format(format, this, formatProvider);
+    }
+
+	public string ToString(string format)
+    {
+		return ToString(format, null);
+    }
+
+	public override string ToString()
+    {
+		return ToString("g", null);
+    }
+
+	#endregion
+
+	#region TryParse
+
+	/// <summary>
+    /// Attempts to parse a string into a <#= me.ClassName #> value 
+    /// </summary>
+	/// <param name="formatProvider">The format provider to use for parsing</param>
+	/// <param name="value">the string to parse</param>
+    /// <param name="result">the parsed value</param>
+    /// <returns>true, if succesful</returns>
+	public static bool TryParse(string value, IFormatProvider formatProvider, out <#= me.ClassName #> result)
+	{
+		var provider =  <#= UnitInfo.MeasureName #>FormatProvider.GetInstance(formatProvider);
+			
+		<#= UnitInfo.MeasureName #> distanceResult;
+		if(provider.TryParse(value, <#= UnitInfo.MeasureName #>Unit.<#= me.ClassName #>, out distanceResult))
+		{
+			result = distanceResult;
+			return true;				
+		}
+
+		result = default(<#= me.ClassName #>);
+		return false;
+	}
+
+	/// <summary>
+    /// Attempts to parse a string into a <#= me.ClassName #> value 
+    /// </summary>
+    /// <param name="value">the string to parse</param>
+    /// <param name="result">the parsed value</param>
+    /// <returns>true, if succesful</returns>
+	public static bool TryParse(string value, out <#= me.ClassName #> result)
+	{
+		return TryParse(value, null, out result);
+	}
+
+	#endregion
+
+    #region I<#= UnitInfo.MeasureName #> Members
+
+	/// <summary>
+    /// Gets this value as an unboxable property
+    /// </summary>
+    <#= UnitInfo.MeasureName #> I<#= UnitInfo.MeasureName #>.<#= UnitInfo.MeasureName #>
+    {
+        get { return this; }
+    }
+
+    #endregion
+}<#	
+	manager.EndBlock(); 
+}
+#>

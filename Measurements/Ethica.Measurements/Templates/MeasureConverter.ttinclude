@@ -1,0 +1,113 @@
+﻿<#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><# 
+	manager.StartNewFile(UnitInfo.MeasureName + "BaseConverter.generated.cs"); 
+#>
+using System;
+using System.ComponentModel;
+using System.Globalization;
+using Ethica.Measurements.Properties;
+
+public abstract class <#= UnitInfo.MeasureName #>BaseConverter : TypeConverter
+{
+    public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+    {
+        if (sourceType == typeof(string) || typeof(I<#= UnitInfo.MeasureName #>).IsAssignableFrom(sourceType))
+            return true;
+
+        return base.CanConvertFrom(context, sourceType);
+    }
+
+    public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+    {
+        if (destinationType == typeof(string) || typeof(I<#= UnitInfo.MeasureName #>).IsAssignableFrom(destinationType))
+            return true;
+
+        return base.CanConvertTo(context, destinationType);
+    }
+
+    public override bool IsValid(ITypeDescriptorContext context, object value)
+    {
+		var asString = value as string;
+        if (asString != null)
+        {
+            <#= UnitInfo.MeasureName #> result;
+            return <#= UnitInfo.MeasureName #>.TryParse(asString, out result);
+        }
+        else if (value is I<#= UnitInfo.MeasureName #>)
+            return true;
+
+        return base.IsValid(context, value);
+    }
+
+    public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+    {
+		var asString = value as string;
+        if (asString != null)
+		{
+            <#= UnitInfo.MeasureName #> result;
+                
+            if (<#= UnitInfo.MeasureName #>FormatProvider.ForCulture(culture).TryParse(asString, out result))
+                return ConvertFrom(result);
+
+            throw new ArgumentException(Resources.Cannot_convert_value,"value");
+        }
+
+		var asNative = value as I<#= UnitInfo.MeasureName #>;
+        if(asNative != null)
+            return ConvertFrom(asNative.<#= UnitInfo.MeasureName #>);
+
+        return base.ConvertFrom(context, culture, value);
+    }
+
+    protected abstract object ConvertFrom(<#= UnitInfo.MeasureName #> <#= UnitInfo.MeasureName.ToLower() #>);
+
+	public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+    {
+		var asNative = value as I<#= UnitInfo.MeasureName #>;
+        if(asNative == null)
+            throw new ArgumentException(Resources.Cannot_convert_value,"value");
+
+        var val = asNative.<#= UnitInfo.MeasureName #>;
+
+        if (destinationType == typeof(string))
+            return val.ToString("g", <#= UnitInfo.MeasureName #>FormatProvider.ForCulture(culture));
+
+        if (destinationType == typeof(<#= UnitInfo.MeasureName #>))
+            return (<#= UnitInfo.MeasureName #>)val;
+
+<#
+foreach(var peer in Units)
+{
+#>
+        if(destinationType == typeof(<#= peer.ClassName #>))
+            return (<#= peer.ClassName #>)val;	
+
+<#
+}
+#>			return base.ConvertTo(context, culture, value, destinationType);
+    }
+}
+<#	
+manager.EndBlock(); 
+
+foreach(var me in Units)
+{
+	manager.StartNewFile(me.ClassName + "Converter.generated.cs"); 
+#>
+using System;
+using System.ComponentModel;
+using System.Globalization;
+using Ethica.Measurements.Properties;
+
+	public partial class <#= me.ClassName #>Converter : <#= UnitInfo.MeasureName #>BaseConverter
+	{
+		protected override object ConvertFrom(<#= UnitInfo.MeasureName #> <#= UnitInfo.MeasureName.ToLower() #>)
+		{
+			return (<#= me.ClassName #>)<#= UnitInfo.MeasureName.ToLower() #>;
+		}     
+	}
+<#	
+	manager.EndBlock(); 
+}
+#>

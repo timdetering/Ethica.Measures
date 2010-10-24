@@ -1,0 +1,32 @@
+﻿<#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><# 
+	manager.StartNewFile("I" + UnitInfo.MeasureName + "FormatProvider.generated.cs"); 
+#>
+using System;
+
+/// <summary>
+/// Extends formatting and parsing abilities to <#= UnitInfo.MeasureName #> measurements.
+/// </summary>
+public interface I<#= UnitInfo.MeasureName #>FormatProvider : ICustomFormatter
+{
+    /// <summary>
+    /// Attempts to convert a string to any suitable unit of measure
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="<#= UnitInfo.MeasureName.ToLower() #>"></param>
+    /// <returns></returns>
+    bool TryParse(string value, out <#= UnitInfo.MeasureName #> <#= UnitInfo.MeasureName.ToLower() #>);
+
+    /// <summary>
+    /// Attempts to convert a string to a specific unit of measure
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="unitOfMeasure"></param>
+    /// <param name="<#= UnitInfo.MeasureName.ToLower() #>"></param>
+    /// <returns></returns>
+    bool TryParse(string value, <#= UnitInfo.MeasureName #>Unit unitOfMeasure, out <#= UnitInfo.MeasureName #> <#= UnitInfo.MeasureName.ToLower() #>);
+}
+<# 
+	manager.EndBlock(); 
+#>

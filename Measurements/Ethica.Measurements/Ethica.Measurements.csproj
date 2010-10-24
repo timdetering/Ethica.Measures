@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6E61969-9562-4E34-89A0-D460FFD83618}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ethica.Measurements</RootNamespace>
+    <AssemblyName>Ethica.Measurements</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Ethica.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <BaseAddress>4325376</BaseAddress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>4325376</BaseAddress>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Lengths\Centimeters.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\CentimetersConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\LengthFormatProvider.cs" />
+    <Compile Include="Lengths\LengthResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LengthResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Length.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Feet.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\FeetConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\ILength.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\ILengthFormatProvider.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Inches.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\InchesConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Kilometers.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\KilometersConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Length.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\LengthBaseConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\LengthFormatProvider.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\LengthUnits.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Meters.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\MetersConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Miles.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\MilesConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Millimeters.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\MillimetersConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Nanometers.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\NanometersConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\Yards.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lengths\YardsConverter.generated.cs">
+      <DependentUpon>Length.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Mass\IMass.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\IMassFormatProvider.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\Mass.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\Mass.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\MassBaseConverter.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\MassFormatProvider.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\MassUnits.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeasurementFormatProvider.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicCentimeters.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicCentimetersConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicFeet.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicFeetConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicInches.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicInchesConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicMeters.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicMetersConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicYards.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\CubicYardsConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\FluidOunces.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\FluidOuncesConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\FluidOuncesUK.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\FluidOuncesUKConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\Gallons.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\GallonsConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\GallonsUK.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\GallonsUKConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\IVolume.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\IVolumeFormatProvider.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\Liters.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\LitersConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\Pints.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\PintsConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\PintsUK.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\PintsUKConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\Quarts.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\QuartsConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\QuartsUK.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\QuartsUKConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\Volume.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\Volumes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\VolumeBaseConverter.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\VolumeFormatProvider.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\VolumeResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VolumeResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Volumes\VolumeUnits.generated.cs">
+      <DependentUpon>Volumes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\Grams.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\GramsConverter.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\Kilograms.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\KilogramsConverter.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\Milligrams.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\MilligramsConverter.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\Ounces.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\OuncesConverter.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\Pounds.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\PoundsConverter.generated.cs">
+      <DependentUpon>Mass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mass\MassResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MassResources.resx</DependentUpon>
+    </Compile>
+    <None Include="Templates\MeasureConverter.ttinclude">
+      <LastGenOutput>MeasureStruct1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\MeasureFormatProvider.ttinclude">
+      <LastGenOutput>MeasureStruct1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\IMeasureFormatProvider.ttinclude">
+      <LastGenOutput>MeasureStruct1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\UnitsEnum.ttinclude">
+      <LastGenOutput>MeasureStruct1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\CoreStruct.ttinclude">
+      <LastGenOutput>MeasureStruct1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\UnitInfo.ttinclude">
+      <LastGenOutput>Manager1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Manager.ttinclude">
+      <LastGenOutput>Manager1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\MeasurementStructs.ttinclude">
+      <LastGenOutput>MeasureTypes1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\ICoreStruct.ttinclude">
+      <LastGenOutput>MeasureStruct1.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Mass\Mass.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Mass.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Ethica.snk" />
+    <None Include="Lengths\Length.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Length.cs</LastGenOutput>
+    </None>
+    <None Include="Manager.ttinclude">
+      <LastGenOutput>Manager1.cs</LastGenOutput>
+    </None>
+    <None Include="Volumes\Volumes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Volumes.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Lengths\LengthResources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LengthResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Volumes\VolumeResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VolumeResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mass\MassResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>MassResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="BeforeBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <MSBuild.ExtensionPack.FileSystem.FileVersion TaskAction="Increment" File="..\BuildVersion.txt">
+      <Output TaskParameter="Value" PropertyName="BuildVersion" />
+    </MSBuild.ExtensionPack.FileSystem.FileVersion>
+    <MSBuild.ExtensionPack.FileSystem.File TaskAction="Replace" RegexPattern="\[assembly: (AssemblyVersion|AssemblyFileVersion)\(&quot;(\d+)\.(\d+)\.(\d+)" Replacement="[assembly: $1(&quot;$2.$3.$(BuildVersion)" Files="Properties\AssemblyInfo.cs" />
+  </Target>
+  <Target Name="AfterBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <MSBuild.ExtensionPack.Framework.Gac TaskAction="AddAssembly" AssemblyPath="$(OutputPath)$(AssemblyName).dll" />
+    <MSBuild.ExtensionPack.Framework.Guid TaskAction="Create">
+      <Output TaskParameter="FormattedGuidString" PropertyName="GuidStringItem" />
+    </MSBuild.ExtensionPack.Framework.Guid>
+    <!--  Update the setup project's ProductVersion and ProductCode properties
+          We have to do this here, since the vdproj projects do not support MSBuild
+    -->
+    <MSBuild.ExtensionPack.FileSystem.File TaskAction="Replace" RegexPattern="&quot;ProductVersion&quot; = &quot;8:(\d+)\.(\d+)\.(\d+)&quot;" Replacement="&quot;ProductVersion&quot; = &quot;8:$1.$2.$(BuildVersion)&quot;" Files="..\Ethica Setup\Ethica Core.vdproj" />
+    <!--<MSBuild.ExtensionPack.FileSystem.File TaskAction="Replace"
+                                  RegexPattern="&quot;(PackageCode|ProductCode)&quot; = &quot;8:{.*}&quot;"
+                                  Replacement="&quot;$1&quot; = &quot;8:{$(GuidStringItem)}&quot;"
+                                  Files="..\Ethica Setup\Ethica Core.vdproj" />-->
+  </Target>
+</Project>

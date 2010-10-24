@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{792D5909-6C14-401C-A533-3D382796A83E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{86E212F2-601D-48B5-AA91-50C63EDC9E46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ethica.Measurements", "Ethica.Measurements\Ethica.Measurements.csproj", "{E6E61969-9562-4E34-89A0-D460FFD83618}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ethica.Measurements.Tests", "Ethica.Measurements.Tests\Ethica.Measurements.Tests.csproj", "{5FD8D2FA-5729-48A6-B4F8-28CCB1B67EE5}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs20
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Ethica.Measurements.Tests\\Ethica.Measurements.Tests.csproj
+		SccProjectTopLevelParentUniqueName1 = Measurements.sln
+		SccProjectName1 = Ethica.Measurements.Tests
+		SccLocalPath1 = Ethica.Measurements.Tests
+		SccProjectUniqueName2 = Ethica.Measurements\\Ethica.Measurements.csproj
+		SccProjectName2 = Ethica.Measurements
+		SccLocalPath2 = Ethica.Measurements
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6E61969-9562-4E34-89A0-D460FFD83618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E61969-9562-4E34-89A0-D460FFD83618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E61969-9562-4E34-89A0-D460FFD83618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E61969-9562-4E34-89A0-D460FFD83618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD8D2FA-5729-48A6-B4F8-28CCB1B67EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD8D2FA-5729-48A6-B4F8-28CCB1B67EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD8D2FA-5729-48A6-B4F8-28CCB1B67EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD8D2FA-5729-48A6-B4F8-28CCB1B67EE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5FD8D2FA-5729-48A6-B4F8-28CCB1B67EE5} = {86E212F2-601D-48B5-AA91-50C63EDC9E46}
+	EndGlobalSection
+EndGlobal

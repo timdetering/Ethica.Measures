@@ -1,0 +1,17 @@
+﻿<#@ assembly name="System.Core" 
+#><#@ import namespace="System.Linq" 
+#><# 
+	manager.StartNewFile(UnitInfo.MeasureName + "Units.generated.cs"); 
+#>
+/// <summary>
+/// Describes the known units of measurement for <#= UnitInfo.MeasureNames #>
+/// </summary>
+public enum <#= UnitInfo.MeasureName #>Unit
+{
+<#  PushIndent("\t"); #>
+<#=	string.Join(",\r\n", Units.Select(c=> c.ClassName).ToArray()) #>
+<#  PopIndent(); #>
+}
+<# 
+	manager.EndBlock(); 
+#>

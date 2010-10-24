@@ -1,0 +1,20 @@
+﻿<#+
+
+public struct UnitInfo
+{
+	public static string MeasureName  ;
+	public static string MeasureNames ;
+
+    public readonly string ClassName;
+    public readonly decimal RelativeUnits;
+	public readonly int Index;
+
+    public UnitInfo(int index, string name, decimal relativeUnits) : this()
+    {
+		Index = index;
+        ClassName = name;
+        RelativeUnits = relativeUnits;
+    }
+}
+
+#>
