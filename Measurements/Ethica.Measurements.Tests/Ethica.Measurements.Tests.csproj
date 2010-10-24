@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="VolumeTest.cs" />
-    <Compile Include="DistanceTest.cs" />
+    <Compile Include="LengthTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
