@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -57,12 +56,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>4325376</BaseAddress>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
@@ -412,24 +411,4 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="BeforeBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <MSBuild.ExtensionPack.FileSystem.FileVersion TaskAction="Increment" File="..\BuildVersion.txt">
-      <Output TaskParameter="Value" PropertyName="BuildVersion" />
-    </MSBuild.ExtensionPack.FileSystem.FileVersion>
-    <MSBuild.ExtensionPack.FileSystem.File TaskAction="Replace" RegexPattern="\[assembly: (AssemblyVersion|AssemblyFileVersion)\(&quot;(\d+)\.(\d+)\.(\d+)" Replacement="[assembly: $1(&quot;$2.$3.$(BuildVersion)" Files="Properties\AssemblyInfo.cs" />
-  </Target>
-  <Target Name="AfterBuild" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <MSBuild.ExtensionPack.Framework.Gac TaskAction="AddAssembly" AssemblyPath="$(OutputPath)$(AssemblyName).dll" />
-    <MSBuild.ExtensionPack.Framework.Guid TaskAction="Create">
-      <Output TaskParameter="FormattedGuidString" PropertyName="GuidStringItem" />
-    </MSBuild.ExtensionPack.Framework.Guid>
-    <!--  Update the setup project's ProductVersion and ProductCode properties
-          We have to do this here, since the vdproj projects do not support MSBuild
-    -->
-    <MSBuild.ExtensionPack.FileSystem.File TaskAction="Replace" RegexPattern="&quot;ProductVersion&quot; = &quot;8:(\d+)\.(\d+)\.(\d+)&quot;" Replacement="&quot;ProductVersion&quot; = &quot;8:$1.$2.$(BuildVersion)&quot;" Files="..\Ethica Setup\Ethica Core.vdproj" />
-    <!--<MSBuild.ExtensionPack.FileSystem.File TaskAction="Replace"
-                                  RegexPattern="&quot;(PackageCode|ProductCode)&quot; = &quot;8:{.*}&quot;"
-                                  Replacement="&quot;$1&quot; = &quot;8:{$(GuidStringItem)}&quot;"
-                                  Files="..\Ethica Setup\Ethica Core.vdproj" />-->
-  </Target>
 </Project>
